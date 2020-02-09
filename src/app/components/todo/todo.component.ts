@@ -29,7 +29,7 @@ import { Todo } from '../../models';
       <button
         [ngClass]="
           todo.completed
-            ? 'text-gray-500 hover:bg-gray-500'
+            ? 'text-gray-500 hover:bg-gray-500 hover:text-white'
             : 'text-blue-500 hover:text-white hover:bg-blue-500'
         "
         class="flex-no-shrink p-2 ml-4 mr-2 rounded"
