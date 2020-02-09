@@ -1,5 +1,8 @@
 import { Component } from '@angular/core';
+import { Select } from '@ngxs/store';
+import { Observable } from 'rxjs';
 import { Todo } from '../../models';
+import { TodoState } from '../../store';
 
 @Component({
   selector: 'app-root',
@@ -7,6 +10,8 @@ import { Todo } from '../../models';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
+  @Select(TodoState.getTodos) todos$: Observable<Todo[]>;
+
   onSubmit(todo) {
     const modeled: Todo = {
       text: todo.text,

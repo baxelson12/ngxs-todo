@@ -1,10 +1,10 @@
-import { State } from '@ngxs/store';
+import { State, Action, StateContext, Selector } from '@ngxs/store';
 
-// export * from './actions';
-// export * from './selectors';
+import * as models from '../models';
+// import * as actions from './actions';
 
 export interface TodoStateModel {
-  todos: [];
+  todos: models.Todo[];
 }
 
 @State<TodoStateModel>({
@@ -13,6 +13,11 @@ export interface TodoStateModel {
     todos: []
   }
 })
-export class TodoState {}
+export class TodoState {
+  @Selector()
+  static getTodos(state: TodoStateModel) {
+    return state.todos;
+  }
+}
 
 export const states = [TodoState];

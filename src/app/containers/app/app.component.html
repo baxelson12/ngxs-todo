@@ -8,8 +8,8 @@
   >
     <app-header (notifySubmit)="onSubmit($event)"></app-header>
     <div id="todos">
-      <!-- <app-empty></app-empty> -->
-      <app-todo></app-todo>
+      <app-empty *ngIf="(todos$ | async)?.length == 0"></app-empty>
+      <app-todo *ngFor="let todo of todos$ | async"></app-todo>
     </div>
   </div>
 </div>
