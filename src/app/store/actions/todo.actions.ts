@@ -13,6 +13,9 @@ export class AddTodo {
 
 export class RemoveTodo {
   static readonly type = ActionsType.REMOVE_TODO;
+  constructor(public payload: models.Todo) {
+    console.log('From action', payload);
+  }
 }
 
 export class CompleteTodo {

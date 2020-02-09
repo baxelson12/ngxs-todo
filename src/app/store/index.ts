@@ -1,5 +1,5 @@
 import { State, Action, StateContext, Selector } from '@ngxs/store';
-import { append } from '@ngxs/store/operators';
+import { patch, removeItem, append } from '@ngxs/store/operators';
 
 import * as models from '../models';
 import * as action from './actions';
@@ -25,12 +25,23 @@ export class TodoState {
     ctx: StateContext<TodoStateModel>,
     { payload }: action.AddTodo
   ) {
-    const state = ctx.getState();
-    const todos: models.Todo[] = [...state.todos, payload];
-    ctx.setState({
-      ...state,
-      todos
-    });
+    ctx.setState(
+      patch({
+        todos: append([payload])
+      })
+    );
+  }
+
+  @Action(action.RemoveTodo)
+  removeTodo(
+    ctx: StateContext<TodoStateModel>,
+    { payload }: action.RemoveTodo
+  ) {
+    ctx.setState(
+      patch<TodoStateModel>({
+        todos: removeItem(todo => todo.id === payload.id)
+      })
+    );
   }
 }
 

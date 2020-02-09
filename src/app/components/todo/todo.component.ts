@@ -26,6 +26,7 @@ import { Todo } from '../../models';
       </button>
       <button
         class="flex-no-shrink p-2 ml-2 rounded text-red-500 hover:text-white hover:bg-red-500"
+        (click)="delete(todo)"
       >
         Remove
       </button>
@@ -36,16 +37,16 @@ import { Todo } from '../../models';
 export class TodoComponent implements OnInit {
   @Output() notifyDone = new EventEmitter<Todo>();
   @Output() notifyDelete = new EventEmitter<Todo>();
-  @Input() todo;
+  @Input() todo: Todo;
 
   constructor() {}
   ngOnInit() {}
 
-  done(todo) {
+  done(todo: Todo) {
     this.notifyDone.emit(todo);
   }
 
-  delete(todo) {
+  delete(todo: Todo) {
     this.notifyDelete.emit(todo);
   }
 }

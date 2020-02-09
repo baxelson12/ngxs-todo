@@ -23,4 +23,9 @@ export class AppComponent {
     };
     this.store.dispatch(new actions.AddTodo(modeled));
   }
+
+  onRemove(todo: Todo) {
+    console.log('From container', todo);
+    this.store.dispatch(new actions.RemoveTodo(todo));
+  }
 }
