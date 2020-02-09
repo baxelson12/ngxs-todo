@@ -17,7 +17,7 @@ import { Todo } from '../../models';
     >
       <!-- "todo.finished ? 'line-through text-green' : 'text-grey-darkest'" -->
       <p
-        class="w-full"
+        class="flex-grow"
         [ngClass]="
           todo.completed ? 'line-through italic text-gray-500' : ''
         "
@@ -35,7 +35,7 @@ import { Todo } from '../../models';
         class="flex-no-shrink p-2 ml-4 mr-2 rounded"
         (click)="done(todo)"
       >
-        Done
+        {{ todo.completed ? 'Not done' : 'Done' }}
       </button>
       <button
         class="flex-no-shrink p-2 ml-2 rounded text-red-500 hover:text-white hover:bg-red-500"
