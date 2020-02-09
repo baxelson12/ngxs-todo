@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Todo } from '../../models';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +7,12 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'ngxs-todo';
+  onSubmit(todo) {
+    const modeled: Todo = {
+      text: todo.text,
+      id: Math.floor(Math.random() * 10),
+      completed: false
+    };
+    console.log(modeled);
+  }
 }
