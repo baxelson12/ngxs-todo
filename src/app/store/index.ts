@@ -1,7 +1,8 @@
 import { State, Action, StateContext, Selector } from '@ngxs/store';
+import { append } from '@ngxs/store/operators';
 
 import * as models from '../models';
-// import * as actions from './actions';
+import * as action from './actions';
 
 export interface TodoStateModel {
   todos: models.Todo[];
@@ -17,6 +18,19 @@ export class TodoState {
   @Selector()
   static getTodos(state: TodoStateModel) {
     return state.todos;
+  }
+
+  @Action(action.AddTodo)
+  addTodo(
+    ctx: StateContext<TodoStateModel>,
+    { payload }: action.AddTodo
+  ) {
+    const state = ctx.getState();
+    const todos: models.Todo[] = [...state.todos, payload];
+    ctx.setState({
+      ...state,
+      todos
+    });
   }
 }
 

@@ -1,3 +1,5 @@
+import * as models from '../../models';
+
 export enum ActionsType {
   ADD_TODO = '[Todo] Add todo',
   REMOVE_TODO = '[Todo] Remove todo',
@@ -6,7 +8,7 @@ export enum ActionsType {
 
 export class AddTodo {
   static readonly type = ActionsType.ADD_TODO;
-  constructor(payload: any) {}
+  constructor(public payload: models.Todo) {}
 }
 
 export class RemoveTodo {

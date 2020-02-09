@@ -2,7 +2,8 @@ import {
   Component,
   OnInit,
   Output,
-  EventEmitter
+  EventEmitter,
+  Input
 } from '@angular/core';
 
 import { Todo } from '../../models';
@@ -15,7 +16,7 @@ import { Todo } from '../../models';
       id="todo"
     >
       <!-- "todo.finished ? 'line-through text-green' : 'text-grey-darkest'" -->
-      <p class="w-full">Todo text</p>
+      <p class="w-full">{{ todo.text }}</p>
       <!-- "todo.finished ? 'text-grey border-grey hover:bg-grey' : 'text-green border-green hover:bg-green'" -->
       <!-- Set button text to done/not done -->
       <button
@@ -35,6 +36,7 @@ import { Todo } from '../../models';
 export class TodoComponent implements OnInit {
   @Output() notifyDone = new EventEmitter<Todo>();
   @Output() notifyDelete = new EventEmitter<Todo>();
+  @Input() todo;
 
   constructor() {}
   ngOnInit() {}

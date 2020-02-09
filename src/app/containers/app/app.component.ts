@@ -1,8 +1,9 @@
 import { Component } from '@angular/core';
-import { Select } from '@ngxs/store';
+import { Select, Store } from '@ngxs/store';
 import { Observable } from 'rxjs';
 import { Todo } from '../../models';
 import { TodoState } from '../../store';
+import * as actions from '../../store/actions';
 
 @Component({
   selector: 'app-root',
@@ -12,12 +13,14 @@ import { TodoState } from '../../store';
 export class AppComponent {
   @Select(TodoState.getTodos) todos$: Observable<Todo[]>;
 
+  constructor(private store: Store) {}
+
   onSubmit(todo) {
     const modeled: Todo = {
       text: todo.text,
       id: Math.floor(Math.random() * 10),
       completed: false
     };
-    console.log(modeled);
+    this.store.dispatch(new actions.AddTodo(modeled));
   }
 }
