@@ -18,9 +18,10 @@ export class AppComponent {
   onSubmit(todo) {
     const modeled: Todo = {
       text: todo.text,
-      id: Math.floor(Math.random() * 10),
+      id: Symbol(),
       completed: false
     };
+    console.log(modeled);
     this.store.dispatch(new actions.AddTodo(modeled));
   }
 
