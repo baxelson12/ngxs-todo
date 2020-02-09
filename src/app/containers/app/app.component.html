@@ -1,13 +1,7 @@
-<div
-  class="h-screen flex items-center justify-center font-sans bg-gray-200"
-  id="wrapper"
->
-  <div
-    class="bg-white rounded shadow p-6 m-4 w-full lg:w-3/4 lg:maw-w-lg"
-    id="card"
-  >
+<div class="wrapper">
+  <div class="card lg:w-3/4 lg:max-w-lg">
     <app-header (notifySubmit)="onSubmit($event)"></app-header>
-    <div id="todos">
+    <div>
       <app-empty *ngIf="(todos$ | async)?.length == 0"></app-empty>
       <app-todo
         *ngFor="let todo of todos$ | async"
