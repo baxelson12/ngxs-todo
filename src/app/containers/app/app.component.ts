@@ -11,22 +11,22 @@ import * as actions from '../../store/actions';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
+  // Create basic selector to extract todos from state
   @Select(TodoState.getTodos) todos$: Observable<Todo[]>;
 
   constructor(private store: Store) {}
 
+  // Create data model, then dispatch data
   onSubmit(todo) {
     const modeled: Todo = {
       text: todo.text,
       id: Symbol(),
       completed: false
     };
-    console.log(modeled);
     this.store.dispatch(new actions.AddTodo(modeled));
   }
 
   onRemove(todo: Todo) {
-    console.log('From container', todo);
     this.store.dispatch(new actions.RemoveTodo(todo));
   }
 

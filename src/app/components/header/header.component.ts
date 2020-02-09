@@ -1,9 +1,4 @@
-import {
-  Component,
-  OnInit,
-  EventEmitter,
-  Output
-} from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
 
 @Component({
@@ -25,16 +20,16 @@ import { FormGroup, FormControl } from '@angular/forms';
   `,
   styleUrls: ['./header.component.scss']
 })
-export class HeaderComponent implements OnInit {
+export class HeaderComponent {
+  // Notify container of submission
   @Output() notifySubmit = new EventEmitter<any>();
 
+  // Basic form to collect input
   todoForm = new FormGroup({
     text: new FormControl()
   });
 
-  constructor() {}
-  ngOnInit() {}
-
+  // Notify container of submission
   submit() {
     this.notifySubmit.emit(this.todoForm.value);
     this.todoForm.reset();

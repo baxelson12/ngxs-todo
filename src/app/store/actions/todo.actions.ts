@@ -1,5 +1,6 @@
 import * as models from '../../models';
 
+// Enum for single source of action definitions
 export enum ActionsType {
   ADD_TODO = '[Todo] Add todo',
   REMOVE_TODO = '[Todo] Remove todo',

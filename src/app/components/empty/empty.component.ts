@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-empty',
@@ -9,8 +9,4 @@ import { Component, OnInit } from '@angular/core';
   `,
   styleUrls: ['./empty.component.scss']
 })
-export class EmptyComponent implements OnInit {
-  constructor() {}
-
-  ngOnInit() {}
-}
+export class EmptyComponent {}

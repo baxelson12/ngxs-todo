@@ -1,6 +1,7 @@
 @tailwind base;
 @tailwind components;
 
+//Outside wrappers
 .wrapper {
   @apply h-screen flex items-center justify-center font-sans bg-gray-200;
 
@@ -9,10 +10,12 @@
   }
 }
 
+//If no todos
 .empty {
   @apply w-full text-center text-gray-800;
 }
 
+//Header, form
 .header {
   @apply mb-8;
 
@@ -29,6 +32,7 @@
   }
 }
 
+//Buttons
 .btn {
   @apply p-2 ml-4 mr-2 rounded;
 
@@ -59,6 +63,7 @@
   }
 }
 
+//Todo item
 .todo {
   @apply flex mb-4 items-center rounded border border-gray-300 py-2 px-3;
 

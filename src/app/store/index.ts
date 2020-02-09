@@ -9,10 +9,12 @@ import {
 import * as models from '../models';
 import * as action from './actions';
 
+// Create interface for store
 export interface TodoStateModel {
   todos: models.Todo[];
 }
 
+// Implement interface, create store
 @State<TodoStateModel>({
   name: 'todoStore',
   defaults: {
@@ -20,11 +22,12 @@ export interface TodoStateModel {
   }
 })
 export class TodoState {
+  // Create selector to get todos array
   @Selector()
   static getTodos(state: TodoStateModel) {
     return state.todos;
   }
-
+  // Create todo, Patch store, append new todo
   @Action(action.AddTodo)
   addTodo(
     ctx: StateContext<TodoStateModel>,
@@ -37,6 +40,7 @@ export class TodoState {
     );
   }
 
+  // Remove todo, Look for todo with matching id
   @Action(action.RemoveTodo)
   removeTodo(
     ctx: StateContext<TodoStateModel>,
@@ -49,6 +53,7 @@ export class TodoState {
     );
   }
 
+  // Find matching id, switch flag for completion on todo object.
   @Action(action.CompleteTodo)
   completeTodo(
     ctx: StateContext<TodoStateModel>,
@@ -65,4 +70,5 @@ export class TodoState {
   }
 }
 
+// For module imports
 export const states = [TodoState];

@@ -1,6 +1,5 @@
 import {
   Component,
-  OnInit,
   Output,
   EventEmitter,
   Input
@@ -31,13 +30,11 @@ import { Todo } from '../../models';
   `,
   styleUrls: ['./todo.component.scss']
 })
-export class TodoComponent implements OnInit {
+export class TodoComponent {
+  // Notifiers for events
   @Output() notifyDone = new EventEmitter<Todo>();
   @Output() notifyDelete = new EventEmitter<Todo>();
   @Input() todo: Todo;
-
-  constructor() {}
-  ngOnInit() {}
 
   done(todo: Todo) {
     this.notifyDone.emit(todo);
