@@ -1,5 +1,10 @@
 import { State, Action, StateContext, Selector } from '@ngxs/store';
-import { patch, removeItem, append } from '@ngxs/store/operators';
+import {
+  patch,
+  removeItem,
+  append,
+  updateItem
+} from '@ngxs/store/operators';
 
 import * as models from '../models';
 import * as action from './actions';
@@ -40,6 +45,21 @@ export class TodoState {
     ctx.setState(
       patch<TodoStateModel>({
         todos: removeItem(todo => todo.id === payload.id)
+      })
+    );
+  }
+
+  @Action(action.CompleteTodo)
+  completeTodo(
+    ctx: StateContext<TodoStateModel>,
+    { payload }: action.CompleteTodo
+  ) {
+    ctx.setState(
+      patch<TodoStateModel>({
+        todos: updateItem<models.Todo>(
+          todo => todo.id === payload.id,
+          patch<models.Todo>({ completed: !payload.completed })
+        )
       })
     );
   }

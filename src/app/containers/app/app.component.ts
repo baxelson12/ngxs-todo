@@ -28,4 +28,8 @@ export class AppComponent {
     console.log('From container', todo);
     this.store.dispatch(new actions.RemoveTodo(todo));
   }
+
+  onDone(todo: Todo) {
+    this.store.dispatch(new actions.CompleteTodo(todo));
+  }
 }

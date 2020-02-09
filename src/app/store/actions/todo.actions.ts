@@ -13,11 +13,10 @@ export class AddTodo {
 
 export class RemoveTodo {
   static readonly type = ActionsType.REMOVE_TODO;
-  constructor(public payload: models.Todo) {
-    console.log('From action', payload);
-  }
+  constructor(public payload: models.Todo) {}
 }
 
 export class CompleteTodo {
   static readonly type = ActionsType.COMPLETE_TODO;
+  constructor(public payload: models.Todo) {}
 }

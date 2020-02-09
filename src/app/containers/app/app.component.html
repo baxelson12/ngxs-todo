@@ -13,6 +13,7 @@
         *ngFor="let todo of todos$ | async"
         [todo]="todo"
         (notifyDelete)="onRemove($event)"
+        (notifyDone)="onDone($event)"
       ></app-todo>
     </div>
   </div>
